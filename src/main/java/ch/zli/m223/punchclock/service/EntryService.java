@@ -17,7 +17,7 @@ public class EntryService {
     public EntryService() {
     }
 
-    @Transactional 
+    @Transactional
     public Entry createEntry(Entry entry) {
         entityManager.persist(entry);
         return entry;
@@ -27,5 +27,17 @@ public class EntryService {
     public List<Entry> findAll() {
         var query = entityManager.createQuery("FROM Entry");
         return query.getResultList();
+    }
+
+    @Transactional
+    public void deleteEntry(long id) {
+        Entry entry = entityManager.find(Entry.class, id);
+        entityManager.remove(entry);
+
+    }
+
+    @Transactional
+    public void updateEntry(Entry entry) {
+        entityManager.merge(entry);
     }
 }

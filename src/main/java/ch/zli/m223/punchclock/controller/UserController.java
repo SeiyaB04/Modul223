@@ -7,22 +7,22 @@ import javax.persistence.Id;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import ch.zli.m223.punchclock.domain.Entry;
-import ch.zli.m223.punchclock.service.EntryService;
+import ch.zli.m223.punchclock.domain.User;
+import ch.zli.m223.punchclock.service.UserService;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
-@Path("/entries")
-@Tag(name = "Entries", description = "Handling of entries")
-public class EntryController {
+@Path("/users")
+@Tag(name = "Users", description = "Handling of users")
+public class UserController {
 
     @Inject
-    EntryService entryService;
+    UserService userService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Entry> list() {
-        return entryService.findAll();
+    public List<User> list() {
+        return userService.findAll();
     }
 
 
@@ -30,8 +30,8 @@ public class EntryController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Entry add(Entry entry) {
-        return entryService.createEntry(entry);
+    public User add(User user) {
+        return userService.createUser(user);
     }
 
     @DELETE
@@ -39,15 +39,15 @@ public class EntryController {
     @Consumes(MediaType.TEXT_PLAIN)
     @Path("/{id}")
     public void delete(@PathParam long id) {
-        entryService.deleteEntry(id);
+        userService.deleteUser(id);
 
 
     }
 
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
-    public void update(Entry entry) {
-        entryService.updateEntry(entry);
+    public void update(User user) {
+        userService.updateUser(user);
     }
 
 

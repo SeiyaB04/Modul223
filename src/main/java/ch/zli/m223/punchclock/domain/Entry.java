@@ -2,6 +2,7 @@ package ch.zli.m223.punchclock.domain;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class Entry {
@@ -15,6 +16,28 @@ public class Entry {
 
     @Column(nullable = false)
     private LocalDateTime checkOut;
+
+    @OneToMany
+    private List<Ticket> tickets;
+
+    @OneToMany
+    private List<Worktype> worktypes;
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public List<Worktype> getWorktypes() {
+        return worktypes;
+    }
+
+    public void setWorktypes(List<Worktype> worktypes) {
+        this.worktypes = worktypes;
+    }
 
     public Long getId() {
         return id;

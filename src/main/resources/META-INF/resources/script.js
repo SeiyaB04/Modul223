@@ -1,5 +1,6 @@
 const URL = 'http://localhost:8080';
 let entries = [];
+let users = [];
 
 const dateAndTimeToDate = (dateString, timeString) => {
     return new Date(`${dateString}T${timeString}`).toISOString();
@@ -61,3 +62,68 @@ document.addEventListener('DOMContentLoaded', function(){
     createEntryForm.addEventListener('submit', createEntry);
     indexEntries();
 });
+
+const register = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const register = {};
+    register['username'] = (formData.get('registerUsername'));
+    register['password'] = (formData.get('registerPassword'));
+
+    fetch(`${URL}/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(register)
+    }).then((result) => {
+        result.json().then((register) => {
+            users.push(register);
+            renderUser();
+        });
+    });
+};
+
+const renderUser = () => {
+    const display = document.querySelector('#userDisplay');
+    display.innerHTML = '';
+
+    users.forEach((user) => {
+        const row = document.createElement('tr');
+        row.appendChild(createCell(user.id));
+        row.appendChild(createCell(user.username));
+        row.appendChild(createCell(user.password));
+        display.appendChild(row);
+    })
+};
+
+document.addEventListener('DOMContentLoaded', function(){
+    const registerForm = document.querySelector('#registerForm');
+    registerForm.addEventListener('submit', register);
+    indexEntries();
+});
+
+/*const login = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const login = {};
+    login['username'] = (formData.get('loginUsername'));
+    login['password'] = (formData.get('loginPassword'));
+
+    if (login['username'] == )
+
+    fetch(`${URL}/users`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(register)
+    }).then((result) => {
+        result.json().then((register) => {
+            users.push(register);
+            renderUser();
+        });
+    });
+};
+
+ */

@@ -7,9 +7,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Punchclock Client</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script src="script.js" type="application/javascript"></script>
+    <script src="worktype.js" src="script.js" type="application/javascript"></script>
 </head>
 <body>
+<header>
+    <ul id="navbar">
+        <li><a href="entries.html">Entries</a></li>
+        <li><a href="ticket.html">Ticket</a></li>
+        <li><a href="user.html">User</a></li>
+    </ul>
+    <button id="logoutButton" onclick="logout()">Logout</button>
+</header>
+
+<script>
+    function logout() {
+        localStorage.clear();
+        location.replace('http://localhost:8080/index.html');
+    }
+
+    window.onload = function () {
+        createWorktype()
+
+    }
+</script>
 <form id="createEntryForm">
     <label for="checkIn">Check in</label>
     <input type="date" name="checkInDate" id="checkIn" required>
@@ -17,19 +37,17 @@
     <label for="checkOut">Check out</label>
     <input type="date" name="checkOutDate" id="checkOut" required>
     <input type="time" name="checkOutTime" required>
-    <label for="worktype">Worktype</label>
-    <select id="worktype" name="worktypes">
-        <option selected value="work">Work</option>
-        <option value="internal education">Internal education</option>
-        <option value="sick">Sick</option>
-        <option value="holiday">Holiday</option>
-    </select>
 
-    <select id="ticket" name="ticket">
+
+    <select id="worktype" name="worktype">
         <option selected value="1">Work</option>
         <option value="2">Internal education</option>
         <option value="3">Sick</option>
         <option value="4">Holiday</option>
+    </select>
+
+
+    <select id="setTicket" name="setTicket">
     </select>
 
     <input type="submit" value="Save"/>

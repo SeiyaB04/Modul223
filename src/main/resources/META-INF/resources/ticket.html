@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="ticket.js" src="script.js" type="application/javascript"></script>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="entries.html">Entries</a></li>
+        <li><a href="ticket.html">Tickets</a></li>
+        <li><a href="user.html">Users</a></li>
+    </ul>
+</header>
+<button id="logoutButton" onclick="logout()">Logout</button>
+
+<script>
+    function logout() {
+        localStorage.clear();
+        location.replace('http://localhost:8080/index.html');
+    }
+</script>
+
+<form id="createTicketForm">
+    <label for="createTicketname">Ticketname</label>
+    <input type="text" name="createTicketname" id="createTicketname" required>
+    <input type="submit" value="Create"/>
+</form>
+
+<form id="updateTicketForm">
+    <label for="updateTicketId">Id</label>
+    <input type="number" name="updateTicketId" id="updateTicketId" required>
+    <label for="updateTicketname">Ticketname</label>
+    <input type="text" name="updateTicketname" id="updateTicketname" required>
+    <input type="submit" value="Update"/>
+</form>
+
+<form id="deleteTicketForm">
+    <label for="deleteTicketId">Id</label>
+    <input type="number" name="deleteTicketId" id="deleteTicketId" required>
+    <input type="submit" value="Delete"/>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Ticketname</th>
+    </tr>
+    </thead>
+    <tbody id="ticketDisplay">
+    <tr>
+        <td colspan="3">Loading...</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

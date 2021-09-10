@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="user.js" src="script.js" type="application/javascript"></script>
+</head>
+<body>
+<ul>
+    <li><a href="entries.html">Entries</a></li>
+    <li><a href="ticket.html">Tickets</a></li>
+    <li><a href="user.html">Users</a></li>
+</ul>
+<button id="logoutButton" onclick=" logout()">Logout</button>
+
+<script>
+    function logout() {
+        localStorage.clear();
+        location.replace('http://localhost:8080/index.html');
+    }
+</script>
+<form id="createUserForm">
+    <label for="createUsername">Username</label>
+    <input type="text" name="createUsername" id="createUsername" required>
+    <label for="createPassword">Password</label>
+    <input type="password" name="createPassword" id="createPassword" required>
+    <input type="submit" value="Create"/>
+</form>
+
+<form id="updateUserForm">
+    <label for="updateUserId">Id</label>
+    <input type="number" name="updateUserId" id="updateUserId" required>
+    <label for="updateUsername">Username</label>
+    <input type="text" name="updateUsername" id="updateUsername" required>
+    <label for="updatePassword">Password</label>
+    <input type="password" name="updatePassword" id="updatePassword" required>
+    <input type="submit" value="Update"/>
+</form>
+
+<form id="deleteUserForm">
+    <label for="deleteUserId">Id</label>
+    <input type="number" name="deleteUserId" id="deleteUserId" required>
+    <input type="submit" value="Delete"/>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+    </tr>
+    </thead>
+    <tbody id="userDisplay">
+    <tr>
+        <td colspan="3">Loading...</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

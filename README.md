@@ -1,17 +1,15 @@
 # M223 Punchclock
 
-Folgende Schritte sind notwendig um die Applikation zu erstellen und zu starten: 
-1. Stellen Sie sicher, dass OpenJDK 11 oder höher installiert und JAVA_HOME korrekt gesetzt ist.  
-2. Installieren Sie (falls noch nicht vorhanden) Apache Maven 3.8.1 oder höher
-3. Wechseln Sie auf der Kommandozeile in den Ordner dieser Appliation. 
-`cd m223-helloworld-quarkus/`
-4. Starten Sie die Applikation mit 
+##Beschreibung
+
+Die Applikation erfässt die Arbeitszeit. Da kann man die Länge der Zeit, den Arbeitstyp und ein Ticket angeben. Um dies zu tun, muss man sich zuerst einloggen. Zudem kann man auch noch User und Tickets erstellen, bearbeiten und löschen. Wenn man fertig ist, kann man sich ausloggen.
+
+Allerding funktioniert nicht alles. Beim Zeiteintragen wusste ich nicht / hatte zu wenig zeit um ein Dropdown aus Tickets zu erstellen. Ansonsten sollte alles funktionieren.
+
+Die Applikation kann man starten, indem man dieses Script im Terminal bei diesem Pfad eingibt. Danach geht man in den Browser und gibt "localhost:8080" ein.
 ```shell script
 ./mvnw compile quarkus:dev
 ```
 
-Folgende Dienste stehen während der Ausführung im Profil dev zur Verfügung:
-
-REST-Schnittstelle der Applikation: http://localhost:8080/entries/
 
 Swagger API: http://localhost:8080/q/swagger-ui/

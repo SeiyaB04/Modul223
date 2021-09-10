@@ -42,10 +42,10 @@ public class UserService {
     }
 
     @Transactional
-    public User getUserByEmailPassword(String email, String password){
+    public User getUserByUsernamePassword(String username, String password){
 
-        var query = entityManager.createQuery("FROM User WHERE email = :email AND password = :password");
-        query.setParameter("email", email);
+        var query = entityManager.createQuery("FROM User WHERE username = :username AND password = :password");
+        query.setParameter("username", username);
         query.setParameter("password", password);
 
         return (User) query.getSingleResult();

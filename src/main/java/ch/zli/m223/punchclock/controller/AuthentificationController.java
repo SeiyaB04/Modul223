@@ -33,13 +33,19 @@ public class AuthentificationController {
     @Inject
     UserService userService;
 
+    /**
+     * Wenn es den username und passwort im DB findet und es übereinstimmt, git es den Token zurück
+     * @param loginViewModel UserDaten für login
+     * @return token
+     */
+
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public LoginResultViewModel login(LoginViewModel loginViewModel){
 
-        User user = userService.getUserByEmailPassword(loginViewModel.getUsername(), loginViewModel.getPassword());
+        User user = userService.getUserByUsernamePassword(loginViewModel.getUsername(), loginViewModel.getPassword());
 
         if(loginViewModel.getUsername().equals(user.getUsername()) && loginViewModel.getPassword().equals(user.getPassword())){
             String token =
@@ -56,6 +62,12 @@ public class AuthentificationController {
     @POST
     @Path("/signUp")
     @Consumes(MediaType.APPLICATION_JSON)
+
+    /**
+     * User wird erstellt.
+     * @param User UserDaten zum registrieren
+     * @return nothing
+     */
 
     public void signUp(User user){
 

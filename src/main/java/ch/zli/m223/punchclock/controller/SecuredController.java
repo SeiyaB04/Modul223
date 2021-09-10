@@ -41,7 +41,6 @@ public class SecuredController {
         return getResponseString(ctx) + ", birthdate: " + jwt.getClaim("birthdate").toString();
     }
 
-
     private String getResponseString(SecurityContext ctx) {
         String name;
         if (ctx.getUserPrincipal() == null) {
@@ -58,6 +57,10 @@ public class SecuredController {
                 name, ctx.isSecure(), ctx.getAuthenticationScheme(), hasJwt());
     }
 
+    /**
+     * Checkt ob der token null ist
+     * @return ja oder nein
+     */
     private boolean hasJwt() {
         return jwt.getClaimNames() != null;
     }

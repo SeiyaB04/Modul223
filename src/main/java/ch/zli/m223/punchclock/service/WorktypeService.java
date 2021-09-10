@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import ch.zli.m223.punchclock.domain.User;
 import ch.zli.m223.punchclock.domain.Worktype;
 
 @ApplicationScoped
@@ -21,6 +22,12 @@ public class WorktypeService {
     public List<Worktype> findAll() {
         var query = entityManager.createQuery("FROM Worktype");
         return query.getResultList();
+    }
+
+    @Transactional
+    public Worktype createWorktype(Worktype worktype) {
+        entityManager.persist(worktype);
+        return worktype;
     }
 
 }

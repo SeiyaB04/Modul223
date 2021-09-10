@@ -19,12 +19,21 @@ public class TicketController {
     @Inject
     TicketService ticketService;
 
+    /**
+     * Holt alle Tickets aus der DB
+     * @return alle tickets
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Ticket> list() {
         return ticketService.findAll();
     }
 
+    /**
+     * Erstellt ein Ticket
+     * @param ticket
+     * @return Gibt hinzugefügtes Ticket zurück
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -32,6 +41,10 @@ public class TicketController {
         return ticketService.createTicket(ticket);
     }
 
+    /**
+     * Löscht ein Ticket
+     * @param id Id des Tickets welche gelöscht werden soll
+     */
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
@@ -42,6 +55,10 @@ public class TicketController {
 
     }
 
+    /**
+     * Bearbeitet Ticket
+     * @param ticket Gibt den Ticket mit der bearbeitet wird
+     */
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
     public void updateTicket(Ticket ticket) {

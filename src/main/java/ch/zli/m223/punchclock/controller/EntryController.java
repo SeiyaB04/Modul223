@@ -19,6 +19,10 @@ public class EntryController {
     @Inject
     EntryService entryService;
 
+    /**
+     * Holt alle entries aus der DB
+     * @return alle entries
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Entry> list() {
@@ -26,7 +30,11 @@ public class EntryController {
     }
 
 
-
+    /**
+     * Erstellt ein entry
+     * @param entry
+     * @return Gibt hinzugefügte entry zurück
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,6 +42,10 @@ public class EntryController {
         return entryService.createEntry(entry);
     }
 
+    /**
+     * Löscht ein entry
+     * @param id Id der entry welche gelöscht werden soll
+     */
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
@@ -44,6 +56,10 @@ public class EntryController {
 
     }
 
+    /**
+     * Bearbeitet entry
+     * @param entry Gibt den entry mit der bearbeitet wird
+     */
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
     public void update(Entry entry) {

@@ -19,6 +19,10 @@ public class UserController {
     @Inject
     UserService userService;
 
+    /**
+     * Holt alle User aus der DB
+     * @return alle user
+     */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> list() {
@@ -26,7 +30,11 @@ public class UserController {
     }
 
 
-
+    /**
+     * Erstellt ein User
+     * @param user
+     * @return Gibt hinzugefügten User zurück
+     */
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -34,6 +42,10 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    /**
+     * Löscht ein User
+     * @param id Id des Users welcher gelöscht werden soll
+     */
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.TEXT_PLAIN)
@@ -44,6 +56,10 @@ public class UserController {
 
     }
 
+    /**
+     * Bearbeitet User
+     * @param user Gibt den User mit der bearbeitet wird
+     */
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
     public void update(User user) {
